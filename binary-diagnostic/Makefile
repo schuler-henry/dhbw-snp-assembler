@@ -37,6 +37,9 @@ endif
 .PHONY: all
 all: $(TARGETS)
 
+binary-diagnostic64: binary-diagnostic64.o binary_ascii_to_int64.o uint_to_ascii64.o
+	$(LD) $(LDOPT64) -o $@ $^
+
 binary-diagnostic64.o : $(INCDIR)/syscall.inc
 
 %32.o : %32.asm
